@@ -4,6 +4,7 @@ Draw a rune reading with the Elder Futhark, right in your browser. Pick a spread
 
 - [Draw a rune reading](https://evoluteur.github.io/rune-reading/)
 - [About runes](https://evoluteur.github.io/rune-reading/about.html)
+- [The 24 runes](https://evoluteur.github.io/rune-reading/runes/index.html): one page per rune, with its meaning, reversed meaning and history
 
 ![Rune Reading](rune-reading.png)
 
@@ -38,9 +39,19 @@ The 24 runes of the Elder Futhark, the oldest runic alphabet, are listed in thei
 
 Each rune has its name (which you can hear), the sound it stands for (f, u, th, a, r...), literal meaning, keywords, an upright meaning, a reversed meaning where it has one, and a line of advice. The names, sounds and aettir are the traditional ones. The meanings and advice were written for this app, in the spirit of the tradition. Runes are an old tool for reflection, not a verdict: treat a reading as a mirror for your own judgment.
 
+## Rune pages
+
+Every rune also has its own static page (`runes/fehu.html` ... `runes/othala.html`), plus a page listing all 24 (`runes/index.html`), so each rune can be found, shared and indexed on its own. They are generated from the same data as the app:
+
+```
+npm run build
+```
+
+This runs [scripts/build-rune-pages.js](https://github.com/evoluteur/rune-reading/blob/main/scripts/build-rune-pages.js), which reads [js/runes-data.js](https://github.com/evoluteur/rune-reading/blob/main/js/runes-data.js) and the longer texts (origin of the name, how the rune reads in a spread) in [scripts/rune-extra.js](https://github.com/evoluteur/rune-reading/blob/main/scripts/rune-extra.js), and rewrites the pages, `sitemap.xml` and `robots.txt`. It only needs Node. Re-run it after editing either file and commit the result.
+
 ## How it is built
 
-The pages are plain HTML, CSS and JavaScript, with no dependencies and no build step. Just open `index.html`.
+The app itself is plain HTML, CSS and JavaScript, with no dependencies and no build step. Just open `index.html`. (The only build step is the optional one above that regenerates the static rune pages.)
 
 - The rune glyphs are drawn as SVG strokes, so they look the same everywhere and do not depend on the visitor's fonts having a Runic character set. A reversed rune is the same drawing turned half a turn.
 - The spoken names come from the browser's speech synthesis. Each name is respelled the way it is pronounced (for example "Fayhoo" for Fehu) in the `SAY` list at the top of [js/speech.js](https://github.com/evoluteur/rune-reading/blob/main/js/speech.js), so a name that sounds wrong on your device is a one-line fix.

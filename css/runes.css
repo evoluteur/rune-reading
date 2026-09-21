@@ -28,6 +28,34 @@
   opacity: 1;
 }
 
+/* GitHub link, just below the theme toggle */
+#omg-github {
+  position: absolute;
+  top: 34px;
+  right: 4px; /* centred under the last toggle icon */
+  margin-top: 12px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none;
+  opacity: 0.75;
+}
+#omg-github svg {
+  width: 30px; /* same size in every theme (the themes' generic svg rule differs) */
+  height: 30px;
+}
+html[data-theme="evol-blue"] #omg-github svg {
+  fill: white; /* like the theme toggle icons on the blue background */
+}
+#omg-github:hover,
+#omg-github:focus-visible {
+  opacity: 1;
+}
+
 .tagline {
   opacity: 0.85;
   margin: 0 0 20px;
@@ -66,6 +94,39 @@ html[data-theme="evol-blue"] .card-detail {
   background: #0288d1 url("themes/evol-blue/spirals.png");
 }
 
+/* speaker button next to the rune name in the panel */
+.detail-say {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 34px;
+  height: 34px;
+  margin: 0 0 4px 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  opacity: 0.65;
+  cursor: pointer;
+}
+.detail-say:hover,
+.detail-say:focus-visible {
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--card-strong), transparent 80%);
+}
+.detail-say svg,
+.detail-say svg:hover {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
 .detail-close {
   position: absolute;
   top: 16px;
@@ -128,6 +189,10 @@ html[data-theme="evol-blue"] .card-detail {
   opacity: 0.8;
 }
 
+.detail-more {
+  margin: 16px 0 0;
+  font-size: 0.9em;
+}
 .detail-credit {
   margin: 16px 0 0;
   font-size: 0.75em;
@@ -302,6 +367,24 @@ html[data-theme="evol-blue"] .card-detail {
   opacity: 0.6;
   cursor: default;
 }
+/* light theme: the theme's buttons have white text, which vanishes on the transparent outline button */
+html[data-theme="light"] .draw-btn.secondary {
+  color: #2b6cb0;
+}
+html[data-theme="light"] .draw-btn.secondary:hover,
+html[data-theme="light"] .draw-btn.secondary:focus {
+  color: white;
+}
+
+/* blue theme: the outline button and the empty slots must stand out on the blue background */
+html[data-theme="evol-blue"] .draw-btn.secondary {
+  color: white;
+  border-color: white;
+}
+html[data-theme="evol-blue"] .draw-btn.secondary:hover,
+html[data-theme="evol-blue"] .draw-btn.secondary:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
 /* Buttons above the reading */
 .interpret-bar {
@@ -362,22 +445,29 @@ html[data-theme="evol-blue"] .card-detail {
   font-size: 2em;
   opacity: 0.4;
 }
+html[data-theme="evol-blue"] .rune-slot.empty {
+  border-color: rgba(255, 255, 255, 0.75);
+  color: white;
+  opacity: 1;
+}
+html[data-theme="evol-blue"] .rune-slot.empty .slot-label {
+  opacity: 0.85;
+}
+html[data-theme="evol-blue"] .rune-slot.empty .slot-num {
+  opacity: 0.65;
+}
 .rune-tile {
   position: relative;
   cursor: pointer;
   transition: border-color 0.15s ease;
 }
-.rune-tile .slot-label {
-  padding: 0 32px; /* room for the speaker button */
-}
+/* speaker button sits right after the rune name */
 .rune-say {
-  position: absolute;
-  z-index: 1; /* above the (translucent) label, which would otherwise catch the click */
-  top: 2px;
-  right: 2px;
-  width: 34px;
-  height: 34px;
-  display: flex;
+  display: inline-flex;
+  vertical-align: middle;
+  margin: -4px 0 0 2px;
+  width: 28px;
+  height: 28px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -484,6 +574,18 @@ html[data-theme="evol-blue"] .card-detail {
   color: var(--card-strong);
   margin: 2px 0 2px;
 }
+/* smaller speaker button in the interpretation cards */
+.rune-name .detail-say {
+  width: 28px;
+  height: 28px;
+  margin: 0 2px 2px 4px;
+  vertical-align: middle;
+}
+.rune-name .detail-say svg,
+.rune-name .detail-say svg:hover {
+  width: 18px;
+  height: 18px;
+}
 .rune-sub {
   font-size: 0.85em;
   color: var(--card-foot);
@@ -572,7 +674,8 @@ html[data-theme="evol-blue"] .card-detail {
   .rune-card {
     width: 100%;
   }
-  .rune-say {
+  .rune-say,
+  .detail-say {
     display: none;
   }
 }

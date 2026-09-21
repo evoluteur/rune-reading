@@ -7,6 +7,9 @@
   "copyright": "(c) 2026 Olivier Giulieri",
   "author": "Olivier Giulieri (https://evoluteur.github.io/)",
   "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build-rune-pages.js"
+  },
   "keywords": [
     "runes",
     "rune-reading",
