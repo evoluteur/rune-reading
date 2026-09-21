@@ -120,54 +120,7 @@ const renderInterpretBar = () => {
 };
 
 // ---------------------------------------------------------------- audio
-
-// Rune names are spoken with the browser's built-in speech voice (no audio
-// files). Speech engines guess at unfamiliar names, so each one is respelled
-// the way it is pronounced; edit a value here to change how a rune is said.
-const SAY = {
-  fehu: "Fayhoo",
-  uruz: "Oorooz",
-  thurisaz: "Thoorisahz",
-  ansuz: "Ahnsooz",
-  raidho: "Rythoh",
-  kaunan: "KowNahn",
-  gebo: "Gayboh",
-  wunjo: "Woonyoh",
-  hagalaz: "Hahgahlahz",
-  nauthiz: "Nowtheez",
-  isa: "Eesah",
-  jera: "Yayrah",
-  eihwaz: "Ayewahz",
-  perthro: "Pairthroh",
-  algiz: "Ahlgeez",
-  sowilo: "Sohweeloh",
-  tiwaz: "Teewahz",
-  berkano: "Bairkahnoh",
-  ehwaz: "Ehwahz",
-  mannaz: "Mahnahz",
-  laguz: "Lahgooz",
-  ingwaz: "Ingwahz",
-  dagaz: "Dahgahz",
-  othala: "Ohthahlah",
-};
-
-const canSpeak = typeof window !== "undefined" && "speechSynthesis" in window;
-
-const speakRune = (id, e) => {
-  if (e) e.stopPropagation(); // do not open the rune panel
-  if (!canSpeak || !runeById[id]) return;
-  const u = new SpeechSynthesisUtterance(SAY[id] || runeById[id].name);
-  u.rate = 0.8;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(u);
-};
-
-const sayKey = (id, e) => {
-  if (e.key === "Enter" || e.key === " ") {
-    e.preventDefault();
-    speakRune(id, e);
-  }
-};
+// SAY, canSpeak, speakRune and sayKey live in js/speech.js.
 
 const sayButton = (rune) =>
   canSpeak
@@ -197,10 +150,9 @@ const slotMarkup = (i) => {
       onclick="showRuneDetail(${i})"
       onkeydown="if (event.target === this && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); showRuneDetail(${i}); }"
       aria-label="${pos.name}: ${rune.name}${d.rev ? ", reversed" : ""}">
-      ${sayButton(rune)}
       <div class="slot-label">${pos.name}</div>
       ${runeSvg(rune, { rev: d.rev, size: "tile" })}
-      <div class="tile-name">${rune.name}</div>
+      <div class="tile-name">${rune.name}${sayButton(rune)}</div>
       <div class="tile-sub">${d.rev ? "Reversed" : rune.lore}</div>
     </div>`;
 };
@@ -345,7 +297,7 @@ const runeCardMarkup = (i, { clickable = false } = {}) => {
       <div class="rune-figure">${runeSvg(rune, { rev: d.rev, size: "card" })}</div>
       <div class="rune-info">
         <div class="rune-role">${pos.name}</div>
-        <div class="rune-name">${rune.name} · ${rune.sound}${d.rev ? '<span class="rev-tag">Reversed</span>' : ""}</div>
+        <div class="rune-name">${rune.name}${detailSayButton(rune)} · ${rune.sound}${d.rev ? '<span class="rev-tag">Reversed</span>' : ""}</div>
         <div class="rune-sub">${rune.lore}</div>
         ${keywordsMarkup(rune)}
         <p class="rune-question">${pos.q}</p>
@@ -401,35 +353,48 @@ const toggleInterpretation = () => {
 const CREDIT_HTML =
   "Rune names, sounds and the three aettir follow the traditional Elder Futhark. Meanings and advice were written for this app.";
 
-const runeDetailMarkup = (i) => {
-  const d = draws[i];
-  const rune = runeById[d.id];
-  const pos = spread().positions[i];
+// Speaker button next to the rune's name in the detail panel.
+const detailSayButton = (rune) =>
+  canSpeak
+    ? `<button type="button" class="detail-say" title="Hear the name" aria-label="Hear the name of ${rune.name}" onclick="speakRune('${rune.id}', event)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>`
+    : "";
+
+// The detail panel for a rune. In a reading it comes with its position in the
+// spread (pos) and may be reversed; on the about page it is the rune alone.
+const detailMarkup = (rune, { rev = false, pos = null } = {}) => {
   const other = rune.reversed
-    ? `<h4>${d.rev ? "When upright" : "When reversed"}</h4>
-       <p class="position-meaning">${d.rev ? rune.upright : rune.reversed}</p>`
+    ? `<h4>${rev ? "When upright" : "When reversed"}</h4>
+       <p class="position-meaning">${rev ? rune.upright : rune.reversed}</p>`
     : `<p class="detail-note">This rune looks the same upside down, so it has no reversed meaning.</p>`;
   return `
     <button type="button" class="detail-close" onclick="closeDetail()" aria-label="Close">&times;</button>
     <div class="detail-header">
-      <div class="rune-figure">${runeSvg(rune, { rev: d.rev, size: "detail" })}</div>
+      <div class="rune-figure">${runeSvg(rune, { rev, size: "detail" })}</div>
       <div>
-        <h3>${rune.name}${d.rev ? '<span class="rev-tag">Reversed</span>' : ""}</h3>
+        <h3>${rune.name}${detailSayButton(rune)}${rev ? '<span class="rev-tag">Reversed</span>' : ""}</h3>
         <div class="detail-position">${rune.char} · “${rune.sound}” · ${rune.lore}</div>
         ${keywordsMarkup(rune)}
       </div>
     </div>
-    <h4>${pos.name}</h4>
-    <p class="position-meaning rune-question">${pos.q}</p>
-    <h4>Meaning${d.rev ? " (reversed)" : rune.reversed ? " (upright)" : ""}</h4>
-    <p class="position-meaning">${meaningOf(rune, d.rev)}</p>
+    ${
+      pos
+        ? `<h4>${pos.name}</h4>
+    <p class="position-meaning rune-question">${pos.q}</p>`
+        : ""
+    }
+    <h4>Meaning${rev ? " (reversed)" : rune.reversed ? " (upright)" : ""}</h4>
+    <p class="position-meaning">${meaningOf(rune, rev)}</p>
     ${other}
     <h4>Advice</h4>
     <p class="fortune">${rune.advice}</p>
     <h4>Aett</h4>
     <p class="position-meaning">${AETTIR[rune.aett].name}: ${AETTIR[rune.aett].theme.toLowerCase()}.</p>
+    <p class="detail-more"><a href="runes/${rune.id}.html">Read more about ${rune.name} &rarr;</a></p>
     <p class="detail-credit">${CREDIT_HTML}</p>`;
 };
+
+const runeDetailMarkup = (i) =>
+  detailMarkup(runeById[draws[i].id], { rev: draws[i].rev, pos: spread().positions[i] });
 
 const showRuneDetail = (i) => {
   const panel = document.getElementById("card-detail");
@@ -447,12 +412,28 @@ const showRuneDetail = (i) => {
   document.getElementById("detail-overlay")?.classList.add("open");
 };
 
+// About page: show one rune (upright, no position) in the panel.
+const showRuneInfo = (id) => {
+  const panel = document.getElementById("card-detail");
+  const rune = runeById[id];
+  if (!panel || !rune) return;
+  panel.innerHTML = detailMarkup(rune);
+  document
+    .querySelectorAll(".rune-pick.active")
+    .forEach((el) => el.classList.remove("active"));
+  document
+    .querySelectorAll(`.rune-pick[data-rune="${id}"]`)
+    .forEach((el) => el.classList.add("active"));
+  panel.classList.add("open");
+  document.getElementById("detail-overlay")?.classList.add("open");
+};
+
 const closeDetail = () => {
   document.getElementById("card-detail")?.classList.remove("open");
   document.getElementById("detail-overlay")?.classList.remove("open");
   activeDetail = -1;
   document
-    .querySelectorAll(".rune-tile.active")
+    .querySelectorAll(".rune-tile.active, .rune-pick.active")
     .forEach((el) => el.classList.remove("active"));
 };
 
@@ -464,7 +445,12 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener("click", (e) => {
   if (!document.getElementById("card-detail")?.classList.contains("open"))
     return;
-  if (e.target.closest(".rune-tile") || e.target.closest(".card-detail")) return;
+  if (
+    e.target.closest(".rune-tile") ||
+    e.target.closest(".rune-pick") ||
+    e.target.closest(".card-detail")
+  )
+    return;
   closeDetail();
 });
 

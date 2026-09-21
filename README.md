@@ -43,7 +43,7 @@ Each rune has its name (which you can hear), the sound it stands for (f, u, th, 
 The pages are plain HTML, CSS and JavaScript, with no dependencies and no build step. Just open `index.html`.
 
 - The rune glyphs are drawn as SVG strokes, so they look the same everywhere and do not depend on the visitor's fonts having a Runic character set. A reversed rune is the same drawing turned half a turn.
-- The spoken names come from the browser's speech synthesis. Each name is respelled the way it is pronounced (for example "Fayhoo" for Fehu) in the `SAY` list at the top of [js/runes.js](https://github.com/evoluteur/rune-reading/blob/main/js/runes.js), so a name that sounds wrong on your device is a one-line fix.
+- The spoken names come from the browser's speech synthesis. Each name is respelled the way it is pronounced (for example "Fayhoo" for Fehu) in the `SAY` list at the top of [js/speech.js](https://github.com/evoluteur/rune-reading/blob/main/js/speech.js), so a name that sounds wrong on your device is a one-line fix.
 - All the rune and spread data lives in [js/runes-data.js](https://github.com/evoluteur/rune-reading/blob/main/js/runes-data.js). To add a spread, add an entry to `SPREADS` with its positions on a grid.
 - Three color themes (dark, light and blue) are shared with my other projects (copied from [omg-themes](https://github.com/evoluteur/omg-themes)), and the theme, the current spread and your last reading are remembered in the browser's local storage.
 
