@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About runes - Rune Reading</title>
+    <meta
+      name="description"
+      content="What runes are, how the Elder Futhark is organized, and a short history of runes and rune reading."
+    />
+    <meta name="author" content="Olivier Giulieri" />
+    <link rel="canonical" href="https://evoluteur.github.io/rune-reading/about.html" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="theme-color" content="#1a212d" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link id="omg-core-css" rel="stylesheet" href="css/core.css" />
+    <script>
+      // Themes (dark, light, evol-blue) are copies of omg-themes; set OMG_THEMES_BASE to link the hosted ones instead.
+      window.OMG_THEMES_BASE = ""; // or "https://evoluteur.github.io/omg-themes/" to link the hosted themes
+      window.OMG_DEFAULT_THEME = "dark";
+      (function () {
+        var t = window.OMG_DEFAULT_THEME;
+        try {
+          t = localStorage.getItem("omg-theme") || t;
+        } catch (e) {}
+        if (t !== "dark" && t !== "light" && t !== "evol-blue") t = window.OMG_DEFAULT_THEME;
+        document.documentElement.setAttribute("data-theme", t);
+        // written here (not in the markup) so the saved theme loads before first paint
+        document.write(
+          '<link id="omg-theme-css" rel="stylesheet" href="' + window.OMG_THEMES_BASE + "css/themes/" + t + "/" + t + '.css" />',
+        );
+      })();
+    </script>
+    <link id="omg-density-css" rel="stylesheet" href="css/densities.css" />
+    <link rel="stylesheet" href="css/about.css" />
+
+    <script src="js/omg.js"></script>
+  </head>
+
+  <body onload="setupPage('about');" id="omg-body">
+    <div id="omg-header">
+      <h1><a href="index.html">Rune Reading</a></h1>
+      <div id="omg-theme-picker"></div>
+    </div>
+    <h2>About runes</h2>
+    <div class="content about">
+      <p class="lede">Runes are the letters of the early Germanic peoples. The word meant &ldquo;secret&rdquo; or &ldquo;whisper&rdquo;: the letters were used for writing, for carving names and charms on objects, and, in later tradition, for divination.</p>
+
+      <h3>The Elder Futhark</h3>
+      <p>The oldest runic alphabet has 24 runes and is named from its first six letters, F, U, Th, A, R and K. It is traditionally split into three groups of eight, the <em class="accent">aettir</em>, named for the first rune of each: Freyr&rsquo;s, Hagal&rsquo;s and Tyr&rsquo;s. Every rune stands for a sound and also carries a word that names it:</p>
+      <dl class="anatomy">
+        <dt>Fehu</dt><dd>The sound F, and the word for cattle, and so for wealth.</dd>
+        <dt>Raidho</dt><dd>The sound R, and the word for riding, and so for a journey.</dd>
+        <dt>Othala</dt><dd>The sound O, and the word for inherited land, and so for home and heritage.</dd>
+      </dl>
+
+      <h3>A short history</h3>
+      <ul class="timeline">
+        <li><span class="when">c. 98 CE</span><span>Tacitus, in the <em>Germania</em>, describes Germanic peoples casting marked twigs to read omens. He does not mention runes.</span></li>
+        <li><span class="when">c. 160 CE</span><span>Some of the earliest known runic inscriptions, such as the one on a comb found at Vimose in Denmark, date from about this time.</span></li>
+        <li><span class="when">5th century</span><span>The Kylver stone from Gotland carries the whole futhark in order.</span></li>
+        <li><span class="when">c. 800</span><span>In Scandinavia the alphabet shrinks to the 16-rune Younger Futhark, while the Anglo-Saxons grow theirs into the futhorc.</span></li>
+        <li><span class="when">13th century</span><span>The <em>Poetic Edda</em>, as recorded in Iceland, tells in the <em>H&aacute;vam&aacute;l</em> how Odin hung nine nights on the world tree and took up the runes.</span></li>
+        <li><span class="when">1982</span><span>Ralph Blum&rsquo;s <em>The Book of Runes</em> popularizes rune casting in English. It adds a blank rune that has no ancient precedent.</span></li>
+      </ul>
+
+      <h3>What is known and what is revived</h3>
+      <p>No ancient description of how runes were cast for divination survives. Modern rune reading is a revival, built on the rune names, on the medieval Old English, Norwegian and Icelandic rune poems, and on twentieth-century practice. That does not make it less useful as a way to reflect on a question, but it is worth knowing which parts are old.</p>
+
+      <p class="note"><a href="index.html">Back to Rune Reading</a></p>
+
+      <div class="footer">
+        <p><a href="about.html">About runes</a></p>
+        <p>Rune names, sounds and the three aettir follow the traditional Elder Futhark; meanings and advice were written for this app.</p>
+        <p>
+          Rune Reading is open source on
+          <a href="https://github.com/evoluteur/rune-reading">GitHub</a>
+          with an MIT license. Had fun browsing the app?
+          <a href="https://github.com/sponsors/evoluteur">Buy me a coffee by becoming a sponsor</a>.
+        </p>
+        <p>
+          You may also like <a href="https://evoluteur.github.io/motivational-numerology/">Motivational Numerology</a>. For more mystic arts as small web apps, see
+          <a href="https://evoluteur.github.io/esoterica.html">Esoterica</a>.
+        </p>
+        <p class="copyright">
+          &#169; 2026
+          <a href="https://evoluteur.github.io/">Olivier Giulieri</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

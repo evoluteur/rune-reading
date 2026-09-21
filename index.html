@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rune Reading</title>
+    <meta
+      name="description"
+      content="Draw a free online rune reading with the Elder Futhark: single rune, three Norns, five-rune cross or Odin's nine-rune spread, with upright and reversed meanings."
+    />
+    <meta name="author" content="Olivier Giulieri" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="theme-color" content="#1a212d" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link id="omg-core-css" rel="stylesheet" href="css/core.css" />
+    <script>
+      // Themes (dark, light, evol-blue) are copies of omg-themes; set OMG_THEMES_BASE to link the hosted ones instead.
+      window.OMG_THEMES_BASE = ""; // or "https://evoluteur.github.io/omg-themes/" to link the hosted themes
+      window.OMG_DEFAULT_THEME = "dark";
+      (function () {
+        var t = window.OMG_DEFAULT_THEME;
+        try {
+          t = localStorage.getItem("omg-theme") || t;
+        } catch (e) {}
+        if (t !== "dark" && t !== "light" && t !== "evol-blue") t = window.OMG_DEFAULT_THEME;
+        document.documentElement.setAttribute("data-theme", t);
+        // written here (not in the markup) so the saved theme loads before first paint
+        document.write(
+          '<link id="omg-theme-css" rel="stylesheet" href="' + window.OMG_THEMES_BASE + "css/themes/" + t + "/" + t + '.css" />',
+        );
+      })();
+    </script>
+    <link id="omg-density-css" rel="stylesheet" href="css/densities.css" />
+    <link rel="stylesheet" href="css/runes.css" />
+    <link rel="stylesheet" href="css/about.css" />
+
+    <script src="js/omg.js"></script>
+    <script src="js/runes-data.js"></script>
+    <script src="js/runes.js"></script>
+  </head>
+
+  <body onload="setupPage('home'); initRunes();" id="omg-body">
+    <div id="omg-header">
+      <h1>Rune Reading</h1>
+      <div id="omg-theme-picker"></div>
+    </div>
+    <h2 id="spread-title">The Three Norns</h2>
+    <div class="content">
+      <p id="spread-tagline" class="tagline"></p>
+
+      <div id="spread-picker" class="spread-picker"></div>
+      <div id="options" class="options"></div>
+
+      <div id="draw-area" class="draw-area"></div>
+
+      <div id="interpret-bar" class="interpret-bar"></div>
+
+      <div id="rune-board" class="rune-board"></div>
+      <div id="interpretation-view" class="interpretation-view"></div>
+
+      <div class="footer">
+        <p><a href="about.html">About runes</a></p>
+        <p>Rune names, sounds and the three aettir follow the traditional Elder Futhark; meanings and advice were written for this app.</p>
+        <p>
+          Rune Reading is open source on
+          <a href="https://github.com/evoluteur/rune-reading">GitHub</a>
+          with an MIT license. Had fun browsing the app?
+          <a href="https://github.com/sponsors/evoluteur">Buy me a coffee by becoming a sponsor</a>.
+        </p>
+        <p>
+          You may also like <a href="https://evoluteur.github.io/motivational-numerology/">Motivational Numerology</a>. For more mystic arts as small web apps, see
+          <a href="https://evoluteur.github.io/esoterica.html">Esoterica</a>.
+        </p>
+        <p class="copyright">
+          &#169; 2026
+          <a href="https://evoluteur.github.io/">Olivier Giulieri</a>
+        </p>
+      </div>
+    </div>
+
+    <div id="detail-overlay" class="detail-overlay"></div>
+    <aside id="card-detail" class="card-detail pane"></aside>
+  </body>
+</html>

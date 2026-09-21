@@ -1,0 +1,31 @@
+{
+  "name": "rune-reading",
+  "version": "1.0.0",
+  "description": "Draw a free online rune reading with the Elder Futhark: single rune, three Norns, five-rune cross or Odin's nine-rune spread, with upright and reversed meanings.",
+  "repository": "github:evoluteur/rune-reading",
+  "homepage": "https://evoluteur.github.io/rune-reading/",
+  "copyright": "(c) 2026 Olivier Giulieri",
+  "author": "Olivier Giulieri (https://evoluteur.github.io/)",
+  "license": "MIT",
+  "keywords": [
+    "runes",
+    "rune-reading",
+    "rune-casting",
+    "elder-futhark",
+    "futhark",
+    "norse",
+    "norse-mythology",
+    "viking",
+    "divination",
+    "oracle",
+    "fortune-telling",
+    "esoteric",
+    "esoterica",
+    "mystic",
+    "odin",
+    "norns",
+    "aett",
+    "svg",
+    "javascript"
+  ]
+}

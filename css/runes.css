@@ -1,0 +1,586 @@
+#omg-header {
+  z-index: 450;
+}
+
+/* core.css is shared across other projects, so the theme-picker's swatch
+   styling stays untouched there -- this overrides it to render icons
+   (sun/moon/spiral, same set as react-morph-charts' ThemeToggle) instead of
+   plain colored circles, without needing to edit the shared file. */
+#omg-theme-picker {
+  gap: 2px;
+}
+#omg-theme-picker > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: none;
+  color: currentColor;
+  opacity: 0.75;
+}
+#omg-theme-picker > a:hover {
+  opacity: 1;
+}
+#omg-theme-picker > a.selected {
+  opacity: 1;
+}
+
+.tagline {
+  opacity: 0.85;
+  margin: 0 0 20px;
+  max-width: 640px;
+}
+
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 400;
+}
+
+.card-detail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(380px, 90vw);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 500;
+  padding: 60px 24px 24px;
+  border-radius: 0;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.35);
+}
+.card-detail.open {
+  transform: translateX(0);
+}
+/* panel background per theme (the shared omg-themes files do not style it) */
+html[data-theme="light"] .card-detail {
+  background-color: #fbfbfb;
+}
+html[data-theme="evol-blue"] .card-detail {
+  background: #0288d1 url("themes/evol-blue/spirals.png");
+}
+
+.detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.6em;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+  padding: 4px 8px;
+  margin: 0;
+}
+
+.detail-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.detail-header h3 {
+  margin: 0 0 4px;
+}
+.detail-position {
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+.detail-note {
+  margin: 14px 0 0;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.keyword {
+  font-size: 0.75em;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid currentColor;
+  opacity: 0.85;
+}
+
+.card-detail h4 {
+  margin: 14px 0 6px;
+}
+.card-detail .fortune {
+  font-style: italic;
+  margin: 0;
+}
+.card-detail .position-meaning {
+  margin: 0;
+  line-height: 1.5;
+}
+.card-detail .rune-question {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.detail-credit {
+  margin: 16px 0 0;
+  font-size: 0.75em;
+  opacity: 0.65;
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------- Runes */
+
+/* The themes ship a generic svg rule (22px, tan fill, orange on hover) meant
+   for icons; rune drawings opt out of it and are drawn with strokes. */
+.rune-svg,
+.bag-svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: inherit;
+  flex-shrink: 0;
+}
+.rune-svg:hover,
+.bag-svg:hover {
+  fill: none;
+}
+.rune-svg {
+  stroke-width: 5;
+  aspect-ratio: 40 / 64;
+}
+.rune-svg g {
+  transition: transform 0.3s ease;
+}
+.sz-tile {
+  height: 84px;
+  width: 52.5px;
+}
+.sz-card {
+  height: 96px;
+  width: 60px;
+}
+.sz-detail {
+  height: 110px;
+  width: 68.75px;
+}
+
+/* Spread and option pickers */
+.spread-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 6px;
+}
+.spread-btn {
+  margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 1.2;
+  background-color: transparent;
+  color: inherit;
+  border: 2px solid var(--card-border);
+}
+.spread-btn:hover,
+.spread-btn:focus {
+  background-color: var(--card-bg);
+  border-color: color-mix(in srgb, var(--card-border), white 40%);
+}
+.spread-btn.selected {
+  background-color: var(--card-bg);
+  border-color: #ffa500;
+}
+.spread-count {
+  font-size: 0.7em;
+  opacity: 0.7;
+}
+.options {
+  margin: 8px 0 0;
+}
+.opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.opt input {
+  width: 1.1em;
+  height: 1.1em;
+  padding: 0;
+  accent-color: #ffa500;
+}
+
+/* The bag: click to draw */
+.draw-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  margin: 22px 0 10px;
+}
+.bag {
+  width: 80px;
+  transform-origin: 50% 90%;
+  color: #ffb74d;
+}
+.bag-svg {
+  width: 80px;
+  height: 90px;
+  stroke-width: 3;
+}
+.bag-rune {
+  stroke-width: 4;
+  opacity: 0.8;
+}
+.bag.shaking {
+  animation: bag-shake 0.7s ease-in-out;
+}
+@keyframes bag-shake {
+  0%,
+  100% {
+    transform: rotate(0) translateY(0);
+  }
+  15% {
+    transform: rotate(-9deg) translateY(-6px);
+  }
+  30% {
+    transform: rotate(8deg) translateY(0);
+  }
+  45% {
+    transform: rotate(-7deg) translateY(-5px);
+  }
+  60% {
+    transform: rotate(6deg) translateY(0);
+  }
+  80% {
+    transform: rotate(-3deg) translateY(-2px);
+  }
+}
+.draw-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.draw-progress {
+  opacity: 0.9;
+  font-weight: bold;
+}
+.draw-question {
+  opacity: 0.75;
+  font-size: 0.9em;
+  font-style: italic;
+}
+.draw-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.draw-btn {
+  margin: 8px 5px 0 0;
+}
+.draw-btn.secondary {
+  background-color: transparent;
+  border: 2px solid #3182ce;
+}
+.draw-btn.secondary:hover,
+.draw-btn.secondary:focus {
+  background-color: #2b6cb0;
+}
+.draw-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Buttons above the reading */
+.interpret-bar {
+  min-height: 1px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.interpret-btn {
+  margin: 10px 0 5px 0;
+}
+
+/* The board: one stone per position, on a grid that follows the spread */
+.rune-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 150px));
+  gap: 14px;
+  margin: 20px 0;
+}
+.rune-board.hidden {
+  display: none;
+}
+.rune-slot {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  min-height: 188px;
+  padding: 10px 8px 12px;
+  margin: 0;
+  text-align: center;
+  border-radius: 12px;
+  border: 3px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: inherit;
+  font: inherit;
+}
+.rune-slot.empty {
+  background: none;
+  border-style: dashed;
+  opacity: 0.6;
+}
+.slot-label {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+  line-height: 1.2;
+  min-height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slot-num {
+  margin: auto;
+  font-size: 2em;
+  opacity: 0.4;
+}
+.rune-tile {
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.rune-tile .slot-label {
+  padding: 0 32px; /* room for the speaker button */
+}
+.rune-say {
+  position: absolute;
+  z-index: 1; /* above the (translucent) label, which would otherwise catch the click */
+  top: 2px;
+  right: 2px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--card-strong);
+  line-height: 1;
+  opacity: 0.6;
+  cursor: pointer;
+}
+.rune-say:hover,
+.rune-say:focus {
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--card-strong), transparent 80%);
+}
+.rune-tile:hover,
+.rune-tile:focus,
+.rune-tile:active {
+  background-color: var(--card-bg);
+  border-color: color-mix(in srgb, var(--card-border), white 40%);
+}
+.rune-tile.reversed:hover,
+.rune-tile.reversed:focus {
+  border-color: #ffa500;
+}
+.rune-tile.active {
+  border-color: currentColor;
+}
+.rune-tile.reversed {
+  border-color: #ffa500;
+}
+.rune-tile.reversed .rune-svg {
+  stroke: #ffa500;
+}
+.tile-name {
+  font-weight: bold;
+  color: var(--card-strong);
+  line-height: 1.1;
+}
+.tile-sub {
+  font-size: 0.75em;
+  color: var(--card-foot);
+  line-height: 1.2;
+}
+.rune-tile.reversed .tile-sub {
+  color: color-mix(in srgb, #ffa500 65%, var(--card-strong));
+}
+.rune-new {
+  animation: rune-flip 0.6s ease;
+}
+@keyframes rune-flip {
+  from {
+    opacity: 0;
+    transform: rotateY(90deg) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0) scale(1);
+  }
+}
+
+.rev-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-size: 0.6em;
+  font-weight: normal;
+  vertical-align: middle;
+  border: 1px solid #ffa500;
+  border-radius: 10px;
+  color: color-mix(in srgb, #ffa500 65%, var(--card-strong));
+}
+
+/* Rune cards: same look as the omg-themes feature cards, with the glyph and
+   the explanation text as two columns. */
+.rune-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+  width: min(460px, 100%);
+  background-color: var(--card-bg);
+  border: 3px solid var(--card-border);
+  border-radius: 10px;
+  padding: 15px 20px 20px;
+  text-align: left;
+}
+.rune-card.reversed {
+  border-color: #ffa500;
+}
+.rune-card.reversed .rune-svg {
+  stroke: #ffa500;
+}
+.rune-info {
+  min-width: 0;
+}
+.rune-role {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+.rune-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--card-strong);
+  margin: 2px 0 2px;
+}
+.rune-sub {
+  font-size: 0.85em;
+  color: var(--card-foot);
+  margin-bottom: 8px;
+}
+.rune-card .keywords {
+  margin-bottom: 8px;
+}
+.rune-question {
+  font-size: 0.8em;
+  font-style: italic;
+  opacity: 0.75;
+  margin: 0 0 8px;
+}
+.rune-line,
+.rune-advice {
+  font-size: 0.85em;
+  color: var(--card-foot);
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+/* Interpretation view */
+.interpretation-view {
+  display: none;
+  margin: 20px 0;
+}
+.interpretation-view.open {
+  display: block;
+}
+.interpret-section {
+  margin-bottom: 30px;
+}
+.interpret-section h3 {
+  margin: 0 0 14px;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+.interpret-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.interpret-note {
+  margin: 14px 0 0;
+  max-width: 640px;
+  opacity: 0.85;
+  font-size: 0.9em;
+}
+.interpret-credit {
+  margin: 100px 0 0;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 560px) {
+  h1 {
+    font-size: 1.6rem;
+    padding-right: 100px;
+  }
+  .rune-board {
+    gap: 8px;
+  }
+  .rune-slot {
+    min-height: 160px;
+    padding: 8px 4px 10px;
+  }
+  .sz-tile {
+    height: 64px;
+    width: 40px;
+  }
+  .slot-label {
+    font-size: 0.6em;
+  }
+  .tile-name {
+    font-size: 0.85em;
+  }
+  .rune-card {
+    gap: 14px;
+    padding: 12px 14px 14px;
+  }
+}
+@media print {
+  .rune-card {
+    width: 100%;
+  }
+  .rune-say {
+    display: none;
+  }
+}
+h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.footer {
+  margin-top: 140px;
+}
