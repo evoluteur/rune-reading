@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About runes - Rune Reading</title>
     <meta
@@ -9,7 +21,10 @@
       content="What runes are, how the Elder Futhark is organized, and a short history of runes and rune reading."
     />
     <meta name="author" content="Olivier Giulieri" />
-    <link rel="canonical" href="https://evoluteur.github.io/rune-reading/about.html" />
+    <link
+      rel="canonical"
+      href="https://evoluteur.github.io/rune-reading/about.html"
+    />
     <link rel="icon" type="image/png" href="favicon.png" />
     <meta name="theme-color" content="#1a212d" />
 
@@ -27,11 +42,18 @@
         try {
           t = localStorage.getItem("omg-theme") || t;
         } catch (e) {}
-        if (t !== "dark" && t !== "light" && t !== "evol-blue") t = window.OMG_DEFAULT_THEME;
+        if (t !== "dark" && t !== "light" && t !== "evol-blue")
+          t = window.OMG_DEFAULT_THEME;
         document.documentElement.setAttribute("data-theme", t);
         // written here (not in the markup) so the saved theme loads before first paint
         document.write(
-          '<link id="omg-theme-css" rel="stylesheet" href="' + window.OMG_THEMES_BASE + "css/themes/" + t + "/" + t + '.css" />',
+          '<link id="omg-theme-css" rel="stylesheet" href="' +
+            window.OMG_THEMES_BASE +
+            "css/themes/" +
+            t +
+            "/" +
+            t +
+            '.css" />',
         );
       })();
     </script>
@@ -46,107 +68,744 @@
     <script>
       // no speech support: hide the speaker buttons
       addEventListener("DOMContentLoaded", () => {
-        if (!canSpeak) document.querySelectorAll(".say-btn").forEach((b) => b.remove());
+        if (!canSpeak)
+          document.querySelectorAll(".say-btn").forEach((b) => b.remove());
       });
     </script>
   </head>
 
-  <body onload="setupPage('about');" id="omg-body">
+  <body onload="setupPage('about')" id="omg-body">
     <div id="omg-header">
       <h1><a href="index.html">Rune Reading</a></h1>
       <div id="omg-theme-picker"></div>
-      <a id="omg-github" href="https://github.com/evoluteur/rune-reading" target="_blank" rel="noopener" title="Rune Reading on GitHub" aria-label="Rune Reading on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+      <a
+        id="omg-github"
+        href="https://github.com/evoluteur/rune-reading"
+        target="_blank"
+        rel="noopener"
+        title="Rune Reading on GitHub"
+        aria-label="Rune Reading on GitHub"
+        ><svg viewBox="0 0 16 16" aria-hidden="true">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+          /></svg
+      ></a>
     </div>
     <h2>About runes</h2>
     <div class="content about">
-      <p class="lede">Runes are the letters of the early Germanic peoples. The word meant &ldquo;secret&rdquo; or &ldquo;whisper&rdquo;: the letters were used for writing, for carving names and charms on objects, and, in later tradition, for divination.</p>
-      <p><button type="button" class="interpret-btn" onclick="location.href='index.html'">Draw Runes Now</button></p>
+      <p class="lede">
+        Runes are the letters of the early Germanic peoples. The word meant
+        &ldquo;secret&rdquo; or &ldquo;whisper&rdquo;: the letters were used for
+        writing, for carving names and charms on objects, and, in later
+        tradition, for divination.
+      </p>
+      <p>
+        <button
+          type="button"
+          class="interpret-btn"
+          onclick="location.href = 'index.html'"
+        >
+          Draw Runes Now
+        </button>
+      </p>
 
       <h3>Carved, not written</h3>
-      <p>Runes were made to be cut into hard surfaces: wood, bone, antler, stone and metal. That is why they are built from straight strokes, mostly vertical staves with short slanting branches, and why they avoid long horizontal lines that would follow the grain of a wooden stick and split it. Most runic writing was on wood, and almost all of that has rotted away, so what survives today is mostly stone, metal and bone.</p>
-      <p>Most inscriptions are short and practical: the owner of a comb or a spearhead, the maker of a brooch, the name of someone remembered on a memorial stone. Some are charms or curses. Each rune also had a name, a whole word, so a single carved letter could stand for a sound or, for a reader who knew the tradition, for the idea in its name.</p>
+      <p>
+        Runes were made to be cut into hard surfaces: wood, bone, antler, stone
+        and metal. That is why they are built from straight strokes, mostly
+        vertical staves with short slanting branches, and why they avoid long
+        horizontal lines that would follow the grain of a wooden stick and split
+        it. Most runic writing was on wood, and almost all of that has rotted
+        away, so what survives today is mostly stone, metal and bone.
+      </p>
+      <p>
+        Most inscriptions are short and practical: the owner of a comb or a
+        spearhead, the maker of a brooch, the name of someone remembered on a
+        memorial stone. Some are charms or curses. Each rune also had a name, a
+        whole word, so a single carved letter could stand for a sound or, for a
+        reader who knew the tradition, for the idea in its name.
+      </p>
 
       <h3>The Elder Futhark</h3>
-      <p>The oldest runic alphabet has 24 runes and is named from its first six letters, F, U, Th, A, R and K, just as &ldquo;alphabet&rdquo; is named from alpha and beta. It is traditionally split into three groups of eight, the <em class="accent">aettir</em> (singular <em class="accent">aett</em>, roughly &ldquo;family&rdquo;), named for the first rune of each: Freyr&rsquo;s, Hagal&rsquo;s and Tyr&rsquo;s. Every rune stands for a sound and also carries a word that names it:</p>
+      <p>
+        The oldest runic alphabet has 24 runes and is named from its first six
+        letters, F, U, Th, A, R and K, just as &ldquo;alphabet&rdquo; is named
+        from alpha and beta. It is traditionally split into three groups of
+        eight, the <em class="accent">aettir</em> (singular
+        <em class="accent">aett</em>, roughly &ldquo;family&rdquo;), named for
+        the first rune of each: Freyr&rsquo;s, Hagal&rsquo;s and Tyr&rsquo;s.
+        Every rune stands for a sound and also carries a word that names it:
+      </p>
       <dl class="anatomy">
-        <dt>Fehu<button type="button" class="say-btn" title="Hear the name" aria-label="Hear the name of Fehu" onclick="speakRune('fehu', event)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></dt><dd>The sound F, and the word for cattle, and so for wealth.</dd>
-        <dt>Raidho<button type="button" class="say-btn" title="Hear the name" aria-label="Hear the name of Raidho" onclick="speakRune('raidho', event)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></dt><dd>The sound R, and the word for riding, and so for a journey.</dd>
-        <dt>Othala<button type="button" class="say-btn" title="Hear the name" aria-label="Hear the name of Othala" onclick="speakRune('othala', event)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></dt><dd>The sound O, and the word for inherited land, and so for home and heritage.</dd>
+        <dt>
+          Fehu<button
+            type="button"
+            class="say-btn"
+            title="Hear the name"
+            aria-label="Hear the name of Fehu"
+            onclick="speakRune('fehu', event)"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" />
+              <path d="M15.5 9a4 4 0 0 1 0 6" />
+              <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
+            </svg>
+          </button>
+        </dt>
+        <dd>The sound F, and the word for cattle, and so for wealth.</dd>
+        <dt>
+          Raidho<button
+            type="button"
+            class="say-btn"
+            title="Hear the name"
+            aria-label="Hear the name of Raidho"
+            onclick="speakRune('raidho', event)"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" />
+              <path d="M15.5 9a4 4 0 0 1 0 6" />
+              <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
+            </svg>
+          </button>
+        </dt>
+        <dd>The sound R, and the word for riding, and so for a journey.</dd>
+        <dt>
+          Othala<button
+            type="button"
+            class="say-btn"
+            title="Hear the name"
+            aria-label="Hear the name of Othala"
+            onclick="speakRune('othala', event)"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" />
+              <path d="M15.5 9a4 4 0 0 1 0 6" />
+              <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
+            </svg>
+          </button>
+        </dt>
+        <dd>
+          The sound O, and the word for inherited land, and so for home and
+          heritage.
+        </dd>
       </dl>
       <figure class="futhark">
-        <div class="aett"><h4>Freyr&rsquo;s aett</h4>
+        <div class="aett">
+          <h4>Freyr&rsquo;s aett</h4>
           <ol class="glyphs">
-            <li><button type="button" class="rune-pick" data-rune="fehu" onclick="showRuneInfo('fehu')" aria-label="Fehu: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Fehu"><path d="M12 4V60M12 22L32 8M12 40L32 26"/></svg><span class="rn">Fehu</span><span class="rs">f</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="uruz" onclick="showRuneInfo('uruz')" aria-label="Uruz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Uruz"><path d="M10 60V4L30 22V60"/></svg><span class="rn">Uruz</span><span class="rs">u</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="thurisaz" onclick="showRuneInfo('thurisaz')" aria-label="Thurisaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Thurisaz"><path d="M12 4V60M12 16L30 32L12 48"/></svg><span class="rn">Thurisaz</span><span class="rs">th</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="ansuz" onclick="showRuneInfo('ansuz')" aria-label="Ansuz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Ansuz"><path d="M12 4V60M12 10L30 24M12 28L30 42"/></svg><span class="rn">Ansuz</span><span class="rs">a</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="raidho" onclick="showRuneInfo('raidho')" aria-label="Raidho: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Raidho"><path d="M12 4V60M12 4L30 20L12 36M12 36L30 60"/></svg><span class="rn">Raidho</span><span class="rs">r</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="kaunan" onclick="showRuneInfo('kaunan')" aria-label="Kaunan: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Kaunan"><path d="M28 12L12 32L28 52"/></svg><span class="rn">Kaunan</span><span class="rs">k</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="gebo" onclick="showRuneInfo('gebo')" aria-label="Gebo: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Gebo"><path d="M8 12L32 52M32 12L8 52"/></svg><span class="rn">Gebo</span><span class="rs">g</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="wunjo" onclick="showRuneInfo('wunjo')" aria-label="Wunjo: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Wunjo"><path d="M12 4V60M12 4L30 16L12 28"/></svg><span class="rn">Wunjo</span><span class="rs">w</span></button></li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="fehu"
+                onclick="showRuneInfo('fehu')"
+                aria-label="Fehu: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Fehu"
+                >
+                  <path d="M12 4V60M12 22L32 8M12 40L32 26" /></svg
+                ><span class="rn">Fehu</span><span class="rs">f</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="uruz"
+                onclick="showRuneInfo('uruz')"
+                aria-label="Uruz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Uruz"
+                >
+                  <path d="M10 60V4L30 22V60" /></svg
+                ><span class="rn">Uruz</span><span class="rs">u</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="thurisaz"
+                onclick="showRuneInfo('thurisaz')"
+                aria-label="Thurisaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Thurisaz"
+                >
+                  <path d="M12 4V60M12 16L30 32L12 48" /></svg
+                ><span class="rn">Thurisaz</span><span class="rs">th</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="ansuz"
+                onclick="showRuneInfo('ansuz')"
+                aria-label="Ansuz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Ansuz"
+                >
+                  <path d="M12 4V60M12 10L30 24M12 28L30 42" /></svg
+                ><span class="rn">Ansuz</span><span class="rs">a</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="raidho"
+                onclick="showRuneInfo('raidho')"
+                aria-label="Raidho: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Raidho"
+                >
+                  <path d="M12 4V60M12 4L30 20L12 36M12 36L30 60" /></svg
+                ><span class="rn">Raidho</span><span class="rs">r</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="kaunan"
+                onclick="showRuneInfo('kaunan')"
+                aria-label="Kaunan: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Kaunan"
+                >
+                  <path d="M28 12L12 32L28 52" /></svg
+                ><span class="rn">Kaunan</span><span class="rs">k</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="gebo"
+                onclick="showRuneInfo('gebo')"
+                aria-label="Gebo: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Gebo"
+                >
+                  <path d="M8 12L32 52M32 12L8 52" /></svg
+                ><span class="rn">Gebo</span><span class="rs">g</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="wunjo"
+                onclick="showRuneInfo('wunjo')"
+                aria-label="Wunjo: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Wunjo"
+                >
+                  <path d="M12 4V60M12 4L30 16L12 28" /></svg
+                ><span class="rn">Wunjo</span><span class="rs">w</span>
+              </button>
+            </li>
           </ol>
         </div>
-        <div class="aett"><h4>Hagal&rsquo;s (Heimdall&rsquo;s) aett</h4>
+        <div class="aett">
+          <h4>Hagal&rsquo;s (Heimdall&rsquo;s) aett</h4>
           <ol class="glyphs">
-            <li><button type="button" class="rune-pick" data-rune="hagalaz" onclick="showRuneInfo('hagalaz')" aria-label="Hagalaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Hagalaz"><path d="M10 4V60M30 4V60M10 24L30 40"/></svg><span class="rn">Hagalaz</span><span class="rs">h</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="nauthiz" onclick="showRuneInfo('nauthiz')" aria-label="Nauthiz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Nauthiz"><path d="M20 4V60M11 24L29 40"/></svg><span class="rn">Nauthiz</span><span class="rs">n</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="isa" onclick="showRuneInfo('isa')" aria-label="Isa: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Isa"><path d="M20 4V60"/></svg><span class="rn">Isa</span><span class="rs">i</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="jera" onclick="showRuneInfo('jera')" aria-label="Jera: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Jera"><path d="M22 6L10 18L22 30M18 34L30 46L18 58"/></svg><span class="rn">Jera</span><span class="rs">j</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="eihwaz" onclick="showRuneInfo('eihwaz')" aria-label="Eihwaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Eihwaz"><path d="M20 4V60M20 4L32 16M20 60L8 48"/></svg><span class="rn">Eihwaz</span><span class="rs">ei</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="perthro" onclick="showRuneInfo('perthro')" aria-label="Perthro: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Perthro"><path d="M12 4V60M12 4L30 12V52L12 60"/></svg><span class="rn">Perthro</span><span class="rs">p</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="algiz" onclick="showRuneInfo('algiz')" aria-label="Algiz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Algiz"><path d="M20 4V60M20 34L6 12M20 34L34 12"/></svg><span class="rn">Algiz</span><span class="rs">z</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="sowilo" onclick="showRuneInfo('sowilo')" aria-label="Sowilo: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Sowilo"><path d="M28 4L12 22L28 38L12 58"/></svg><span class="rn">Sowilo</span><span class="rs">s</span></button></li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="hagalaz"
+                onclick="showRuneInfo('hagalaz')"
+                aria-label="Hagalaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Hagalaz"
+                >
+                  <path d="M10 4V60M30 4V60M10 24L30 40" /></svg
+                ><span class="rn">Hagalaz</span><span class="rs">h</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="nauthiz"
+                onclick="showRuneInfo('nauthiz')"
+                aria-label="Nauthiz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Nauthiz"
+                >
+                  <path d="M20 4V60M11 24L29 40" /></svg
+                ><span class="rn">Nauthiz</span><span class="rs">n</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="isa"
+                onclick="showRuneInfo('isa')"
+                aria-label="Isa: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Isa"
+                >
+                  <path d="M20 4V60" /></svg
+                ><span class="rn">Isa</span><span class="rs">i</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="jera"
+                onclick="showRuneInfo('jera')"
+                aria-label="Jera: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Jera"
+                >
+                  <path d="M22 6L10 18L22 30M18 34L30 46L18 58" /></svg
+                ><span class="rn">Jera</span><span class="rs">j</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="eihwaz"
+                onclick="showRuneInfo('eihwaz')"
+                aria-label="Eihwaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Eihwaz"
+                >
+                  <path d="M20 4V60M20 4L32 16M20 60L8 48" /></svg
+                ><span class="rn">Eihwaz</span><span class="rs">ei</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="perthro"
+                onclick="showRuneInfo('perthro')"
+                aria-label="Perthro: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Perthro"
+                >
+                  <path d="M12 4V60M12 4L30 12V52L12 60" /></svg
+                ><span class="rn">Perthro</span><span class="rs">p</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="algiz"
+                onclick="showRuneInfo('algiz')"
+                aria-label="Algiz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Algiz"
+                >
+                  <path d="M20 4V60M20 34L6 12M20 34L34 12" /></svg
+                ><span class="rn">Algiz</span><span class="rs">z</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="sowilo"
+                onclick="showRuneInfo('sowilo')"
+                aria-label="Sowilo: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Sowilo"
+                >
+                  <path d="M28 4L12 22L28 38L12 58" /></svg
+                ><span class="rn">Sowilo</span><span class="rs">s</span>
+              </button>
+            </li>
           </ol>
         </div>
-        <div class="aett"><h4>Tyr&rsquo;s aett</h4>
+        <div class="aett">
+          <h4>Tyr&rsquo;s aett</h4>
           <ol class="glyphs">
-            <li><button type="button" class="rune-pick" data-rune="tiwaz" onclick="showRuneInfo('tiwaz')" aria-label="Tiwaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Tiwaz"><path d="M20 60V4M6 22L20 4L34 22"/></svg><span class="rn">Tiwaz</span><span class="rs">t</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="berkano" onclick="showRuneInfo('berkano')" aria-label="Berkano: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Berkano"><path d="M12 4V60M12 4L30 18L12 32L30 46L12 60"/></svg><span class="rn">Berkano</span><span class="rs">b</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="ehwaz" onclick="showRuneInfo('ehwaz')" aria-label="Ehwaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Ehwaz"><path d="M8 60V4L20 22L32 4V60"/></svg><span class="rn">Ehwaz</span><span class="rs">e</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="mannaz" onclick="showRuneInfo('mannaz')" aria-label="Mannaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Mannaz"><path d="M10 4V60M30 4V60M10 4L30 28M30 4L10 28"/></svg><span class="rn">Mannaz</span><span class="rs">m</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="laguz" onclick="showRuneInfo('laguz')" aria-label="Laguz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Laguz"><path d="M12 4V60M12 4L30 22"/></svg><span class="rn">Laguz</span><span class="rs">l</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="ingwaz" onclick="showRuneInfo('ingwaz')" aria-label="Ingwaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Ingwaz"><path d="M20 12L34 32L20 52L6 32Z"/></svg><span class="rn">Ingwaz</span><span class="rs">ng</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="dagaz" onclick="showRuneInfo('dagaz')" aria-label="Dagaz: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Dagaz"><path d="M8 12V52L32 12V52Z"/></svg><span class="rn">Dagaz</span><span class="rs">d</span></button></li>
-            <li><button type="button" class="rune-pick" data-rune="othala" onclick="showRuneInfo('othala')" aria-label="Othala: show its meaning"><svg class="glyph" viewBox="0 0 40 64" role="img" aria-label="Othala"><path d="M20 4L32 20L20 36L8 20ZM14 28L6 58M26 28L34 58"/></svg><span class="rn">Othala</span><span class="rs">o</span></button></li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="tiwaz"
+                onclick="showRuneInfo('tiwaz')"
+                aria-label="Tiwaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Tiwaz"
+                >
+                  <path d="M20 60V4M6 22L20 4L34 22" /></svg
+                ><span class="rn">Tiwaz</span><span class="rs">t</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="berkano"
+                onclick="showRuneInfo('berkano')"
+                aria-label="Berkano: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Berkano"
+                >
+                  <path d="M12 4V60M12 4L30 18L12 32L30 46L12 60" /></svg
+                ><span class="rn">Berkano</span><span class="rs">b</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="ehwaz"
+                onclick="showRuneInfo('ehwaz')"
+                aria-label="Ehwaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Ehwaz"
+                >
+                  <path d="M8 60V4L20 22L32 4V60" /></svg
+                ><span class="rn">Ehwaz</span><span class="rs">e</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="mannaz"
+                onclick="showRuneInfo('mannaz')"
+                aria-label="Mannaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Mannaz"
+                >
+                  <path d="M10 4V60M30 4V60M10 4L30 28M30 4L10 28" /></svg
+                ><span class="rn">Mannaz</span><span class="rs">m</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="laguz"
+                onclick="showRuneInfo('laguz')"
+                aria-label="Laguz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Laguz"
+                >
+                  <path d="M12 4V60M12 4L30 22" /></svg
+                ><span class="rn">Laguz</span><span class="rs">l</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="ingwaz"
+                onclick="showRuneInfo('ingwaz')"
+                aria-label="Ingwaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Ingwaz"
+                >
+                  <path d="M20 12L34 32L20 52L6 32Z" /></svg
+                ><span class="rn">Ingwaz</span><span class="rs">ng</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="dagaz"
+                onclick="showRuneInfo('dagaz')"
+                aria-label="Dagaz: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Dagaz"
+                >
+                  <path d="M8 12V52L32 12V52Z" /></svg
+                ><span class="rn">Dagaz</span><span class="rs">d</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="rune-pick"
+                data-rune="othala"
+                onclick="showRuneInfo('othala')"
+                aria-label="Othala: show its meaning"
+              >
+                <svg
+                  class="glyph"
+                  viewBox="0 0 40 64"
+                  role="img"
+                  aria-label="Othala"
+                >
+                  <path
+                    d="M20 4L32 20L20 36L8 20ZM14 28L6 58M26 28L34 58"
+                  /></svg
+                ><span class="rn">Othala</span><span class="rs">o</span>
+              </button>
+            </li>
           </ol>
         </div>
-        <figcaption>The 24 runes of the Elder Futhark in their traditional order, each with its name and the sound it stands for. Click a rune to read its meaning, or see <a href="runes/">the full page for each rune</a>.</figcaption>
+        <figcaption>
+          The 24 runes of the Elder Futhark in their traditional order, each
+          with its name and the sound it stands for. Click a rune to read its
+          meaning, or see <a href="runes/">the full page for each rune</a>.
+        </figcaption>
       </figure>
 
       <h3>Old runes you can still see</h3>
-      <p>The runes in this app are drawn from the Elder Futhark, but real inscriptions from the period are still in museums and fields across Northern Europe. A few well-known ones, with approximate dates:</p>
+      <p>
+        The runes in this app are drawn from the Elder Futhark, but real
+        inscriptions from the period are still in museums and fields across
+        Northern Europe. A few well-known ones, with approximate dates:
+      </p>
       <ul class="timeline">
-        <li><span class="when">c. 160 CE</span><span><strong>The Vimose comb</strong>, found in a bog on the Danish island of Funen, carries the word <em>harja</em> and is among the earliest known runic inscriptions.</span></li>
-        <li><span class="when">c. 400 CE</span><span><strong>The Kylver stone</strong>, from Gotland in Sweden, was set in a grave and has the whole futhark cut into it in order. <a href="https://en.wikipedia.org/wiki/Kylver_Stone" target="_blank" rel="noopener">See photos</a>.</span></li>
-        <li><span class="when">6th century</span><span><strong>The Vadstena bracteate</strong>, a thin gold medallion from Sweden, has the futhark stamped around its edge, divided into the three groups of eight. <a href="https://en.wikipedia.org/wiki/Vadstena_bracteate" target="_blank" rel="noopener">See photos</a>.</span></li>
-        <li><span class="when">late 7th century</span><span><strong>The Bj&ouml;rketorp stone</strong>, in Blekinge, Sweden, is a tall standing stone whose inscription warns against anyone who would disturb the monument. <a href="https://en.wikipedia.org/wiki/Bj%C3%B6rketorp_Runestone" target="_blank" rel="noopener">See photos</a>.</span></li>
-        <li><span class="when">c. 800 CE</span><span><strong>The R&ouml;k runestone</strong>, in Sweden, has the longest known runic inscription on a stone, hundreds of characters in the later 16-rune alphabet. <a href="https://en.wikipedia.org/wiki/R%C3%B6k_runestone" target="_blank" rel="noopener">See photos</a>.</span></li>
+        <li>
+          <span class="when">c. 160 CE</span
+          ><span
+            ><strong>The Vimose comb</strong>, found in a bog on the Danish
+            island of Funen, carries the word <em>harja</em> and is among the
+            earliest known runic inscriptions.</span
+          >
+        </li>
+        <li>
+          <span class="when">c. 400 CE</span
+          ><span
+            ><strong>The Kylver stone</strong>, from Gotland in Sweden, was set
+            in a grave and has the whole futhark cut into it in order.
+            <a
+              href="https://en.wikipedia.org/wiki/Kylver_Stone"
+              target="_blank"
+              rel="noopener"
+              >See photos</a
+            >.</span
+          >
+        </li>
+        <li>
+          <span class="when">6th century</span
+          ><span
+            ><strong>The Vadstena bracteate</strong>, a thin gold medallion from
+            Sweden, has the futhark stamped around its edge, divided into the
+            three groups of eight.
+            <a
+              href="https://en.wikipedia.org/wiki/Vadstena_bracteate"
+              target="_blank"
+              rel="noopener"
+              >See photos</a
+            >.</span
+          >
+        </li>
+        <li>
+          <span class="when">late 7th century</span
+          ><span
+            ><strong>The Bj&ouml;rketorp stone</strong>, in Blekinge, Sweden, is
+            a tall standing stone whose inscription warns against anyone who
+            would disturb the monument.
+            <a
+              href="https://en.wikipedia.org/wiki/Bj%C3%B6rketorp_Runestone"
+              target="_blank"
+              rel="noopener"
+              >See photos</a
+            >.</span
+          >
+        </li>
+        <li>
+          <span class="when">c. 800 CE</span
+          ><span
+            ><strong>The R&ouml;k runestone</strong>, in Sweden, has the longest
+            known runic inscription on a stone, hundreds of characters in the
+            later 16-rune alphabet.
+            <a
+              href="https://en.wikipedia.org/wiki/R%C3%B6k_runestone"
+              target="_blank"
+              rel="noopener"
+              >See photos</a
+            >.</span
+          >
+        </li>
       </ul>
 
       <h3>Beyond the Elder Futhark</h3>
-      <p>Runes changed with the people who used them. Around 800 CE, in Scandinavia, the alphabet shrank to 16 runes, the <em class="accent">Younger Futhark</em>, as the spoken language changed, and one rune then had to cover several sounds. In England and Frisia the Anglo-Saxons went the other way and grew the alphabet to more than 30 runes, the <em class="accent">futhorc</em>. Rune Reading uses the Elder Futhark, the oldest and most widely used set for modern divination.</p>
+      <p>
+        Runes changed with the people who used them. Around 800 CE, in
+        Scandinavia, the alphabet shrank to 16 runes, the
+        <em class="accent">Younger Futhark</em>, as the spoken language changed,
+        and one rune then had to cover several sounds. In England and Frisia the
+        Anglo-Saxons went the other way and grew the alphabet to more than 30
+        runes, the <em class="accent">futhorc</em>. Rune Reading uses the Elder
+        Futhark, the oldest and most widely used set for modern divination.
+      </p>
 
       <h3>A short history</h3>
       <ul class="timeline">
-        <li><span class="when">c. 98 CE</span><span>Tacitus, in the <em>Germania</em>, describes Germanic peoples casting marked twigs to read omens. He does not mention runes.</span></li>
-        <li><span class="when">c. 160 CE</span><span>Some of the earliest known runic inscriptions, such as the one on a comb found at Vimose in Denmark, date from about this time.</span></li>
-        <li><span class="when">5th century</span><span>The Kylver stone from Gotland carries the whole futhark in order.</span></li>
-        <li><span class="when">c. 800</span><span>In Scandinavia the alphabet shrinks to the 16-rune Younger Futhark, while the Anglo-Saxons grow theirs into the futhorc.</span></li>
-        <li><span class="when">13th century</span><span>The <em>Poetic Edda</em>, as recorded in Iceland, tells in the <em>H&aacute;vam&aacute;l</em> how Odin hung nine nights on the world tree and took up the runes.</span></li>
-        <li><span class="when">1982</span><span>Ralph Blum&rsquo;s <em>The Book of Runes</em> popularizes rune casting in English. It adds a blank rune that has no ancient precedent.</span></li>
+        <li>
+          <span class="when">c. 98 CE</span
+          ><span
+            >Tacitus, in the <em>Germania</em>, describes Germanic peoples
+            casting marked twigs to read omens. He does not mention runes.</span
+          >
+        </li>
+        <li>
+          <span class="when">c. 160 CE</span
+          ><span
+            >Some of the earliest known runic inscriptions, such as the one on a
+            comb found at Vimose in Denmark, date from about this time.</span
+          >
+        </li>
+        <li>
+          <span class="when">5th century</span
+          ><span
+            >The Kylver stone from Gotland carries the whole futhark in
+            order.</span
+          >
+        </li>
+        <li>
+          <span class="when">c. 800</span
+          ><span
+            >In Scandinavia the alphabet shrinks to the 16-rune Younger Futhark,
+            while the Anglo-Saxons grow theirs into the futhorc.</span
+          >
+        </li>
+        <li>
+          <span class="when">13th century</span
+          ><span
+            >The <em>Poetic Edda</em>, as recorded in Iceland, tells in the
+            <em>H&aacute;vam&aacute;l</em> how Odin hung nine nights on the
+            world tree and took up the runes.</span
+          >
+        </li>
+        <li>
+          <span class="when">1982</span
+          ><span
+            >Ralph Blum&rsquo;s <em>The Book of Runes</em> popularizes rune
+            casting in English. It adds a blank rune that has no ancient
+            precedent.</span
+          >
+        </li>
       </ul>
 
       <h3>What is known and what is revived</h3>
-      <p>No ancient description of how runes were cast for divination survives. Modern rune reading is a revival, built on the rune names, on the medieval Old English, Norwegian and Icelandic rune poems, and on twentieth-century practice. That does not make it less useful as a way to reflect on a question, but it is worth knowing which parts are old.</p>
+      <p>
+        No ancient description of how runes were cast for divination survives.
+        Modern rune reading is a revival, built on the rune names, on the
+        medieval Old English, Norwegian and Icelandic rune poems, and on
+        twentieth-century practice. That does not make it less useful as a way
+        to reflect on a question, but it is worth knowing which parts are old.
+      </p>
 
       <h3>How this app uses them</h3>
-      <p>Each reading draws runes from the bag of 24 without replacement, so a rune never appears twice. Every rune has its name, its sound (click the speaker icon on a drawn rune to hear its name), its old meaning, and a short upright and reversed reading written for this app. Treat a reading as a mirror for your own judgment rather than a verdict.</p>
+      <p>
+        Each reading draws runes from the bag of 24 without replacement, so a
+        rune never appears twice. Every rune has its name, its sound (click the
+        speaker icon on a drawn rune to hear its name), its old meaning, and a
+        short upright and reversed reading written for this app. Treat a reading
+        as a mirror for your own judgment rather than a verdict.
+      </p>
 
       <p class="note"><a href="index.html">Back to Rune Reading</a></p>
 
       <div class="footer">
-        <p><a href="runes/">The 24 runes</a> · <a href="about.html">About runes</a></p>
-        <p>Rune names, sounds and the three aettir follow the traditional Elder Futhark; meanings and advice were written for this app.</p>
+        <p>
+          <a href="runes/">The 24 runes</a> ·
+          <a href="about.html">About runes</a>
+        </p>
+        <p>
+          Rune names, sounds and the three aettir follow the traditional Elder
+          Futhark; meanings and advice were written for this app.
+        </p>
         <p>
           Rune Reading is open source on
           <a href="https://github.com/evoluteur/rune-reading">GitHub</a>
@@ -154,7 +813,9 @@
         </p>
         <p>
           Had fun browsing the app?
-          <a href="https://github.com/sponsors/evoluteur">Buy me a coffee by becoming a sponsor</a>.
+          <a href="https://github.com/sponsors/evoluteur"
+            >Buy me a coffee by becoming a sponsor</a
+          >.
         </p>
         <p>
           You may also like <a href="https://evoluteur.github.io/motivational-numerology/">Motivational Numerology</a>. For more mystic arts as small web apps, see
