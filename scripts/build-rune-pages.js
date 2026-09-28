@@ -18,20 +18,28 @@ const SITE = "https://evoluteur.github.io/rune-reading/";
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const { runesData, AETTIR } = vm.runInNewContext(
-  fs.readFileSync(path.join(root, "js/runes-data.js"), "utf8") + ";({ runesData, AETTIR })",
+  fs.readFileSync(path.join(root, "js/runes-data.js"), "utf8") +
+    ";({ runesData, AETTIR })",
 );
 const EXTRA = require("./rune-extra.js");
 
 const esc = (s) =>
-  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 const firstSentence = (s) => s.split(/(?<=\.)\s/)[0];
 const lc = (s) => s.charAt(0).toLowerCase() + s.slice(1);
 
 // the GitHub link markup is taken from index.html so the two stay identical
 // (\s tolerates the line breaks a code formatter may add inside the tag)
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
-const GITHUB_LINK = indexHtml.match(/<a\s[^>]*id="omg-github"[\s\S]*?<\/a>/)?.[0];
-if (!GITHUB_LINK) throw new Error('index.html has no <a id="omg-github"> link to copy');
+const GITHUB_LINK = indexHtml.match(
+  /<a\s[^>]*id="omg-github"[\s\S]*?<\/a>/,
+)?.[0];
+if (!GITHUB_LINK)
+  throw new Error('index.html has no <a id="omg-github"> link to copy');
 
 const glyph = (r, cls = "glyph") =>
   `<svg class="${cls}" viewBox="0 0 40 64" role="img" aria-label="${r.name}"><path d="${r.path}"/></svg>`;
@@ -40,10 +48,25 @@ const runeFigure = (r) =>
 const sayButton = (r) =>
   `<button type="button" class="detail-say" title="Hear the name" aria-label="Hear the name of ${r.name}" onclick="speakRune('${r.id}', event)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>`;
 
-const head = ({ title, description, url, ogType = "article", jsonld }) => `<!doctype html>
+const head = ({
+  title,
+  description,
+  url,
+  ogType = "article",
+  jsonld,
+}) => `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}" />
@@ -120,7 +143,7 @@ const footer = () => `
           <a href="https://github.com/sponsors/evoluteur">Buy me a coffee by becoming a sponsor</a>.
         </p>
         <p>
-          You may also like <a href="https://evoluteur.github.io/motivational-numerology/">Motivational Numerology</a>. For more mystic arts as small web apps, see
+          You may also like <a href="https://evoluteur.github.io/tarot-reading/">Tarot</a>, <a href="https://evoluteur.github.io/i-ching-reading/">I Ching</a>, and <a href="https://evoluteur.github.io/motivational-numerology/">Motivational Numerology</a>. For more mystic arts as small web apps, see
           <a href="https://evoluteur.github.io/esoterica.html">Esoterica</a>.
         </p>
         <p class="copyright">
@@ -133,10 +156,19 @@ const footer = () => `
 </html>
 `;
 
-const author = { "@type": "Person", name: "Olivier Giulieri", url: "https://evoluteur.github.io/" };
+const author = {
+  "@type": "Person",
+  name: "Olivier Giulieri",
+  url: "https://evoluteur.github.io/",
+};
 const breadcrumb = (items) => ({
   "@type": "BreadcrumbList",
-  itemListElement: items.map(([name, url], i) => ({ "@type": "ListItem", position: i + 1, name, item: url })),
+  itemListElement: items.map(([name, url], i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name,
+    item: url,
+  })),
 });
 const website = { "@type": "WebSite", name: "Rune Reading", url: SITE };
 
@@ -172,7 +204,12 @@ const runePage = (r, i) => {
         mainEntityOfPage: url,
         inLanguage: "en",
         about: `The ${r.name} rune of the Elder Futhark`,
-        keywords: [r.name, `${r.name} rune`, "Elder Futhark", ...r.keywords].join(", "),
+        keywords: [
+          r.name,
+          `${r.name} rune`,
+          "Elder Futhark",
+          ...r.keywords,
+        ].join(", "),
         image: `${SITE}rune-reading.png`,
         datePublished: TODAY,
         dateModified: TODAY,
@@ -332,7 +369,8 @@ runesData.forEach((r, i) => {
   fs.writeFileSync(path.join(outDir, `${r.id}.html`), html);
   const t = html.match(/<title>(.*?)<\/title>/)[1];
   const d = html.match(/name="description" content="(.*?)"/)[1];
-  if (titles.has(t) || descriptions.has(d)) throw new Error(`duplicate title/description for ${r.id}`);
+  if (titles.has(t) || descriptions.has(d))
+    throw new Error(`duplicate title/description for ${r.id}`);
   titles.add(t);
   descriptions.add(d);
 });
@@ -360,7 +398,10 @@ ${urls
 </urlset>
 `,
 );
-fs.writeFileSync(path.join(root, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}sitemap.xml\n`);
+fs.writeFileSync(
+  path.join(root, "robots.txt"),
+  `User-agent: *\nAllow: /\n\nSitemap: ${SITE}sitemap.xml\n`,
+);
 
 const lens = [...descriptions].map((d) => d.length);
 console.log(
