@@ -33,9 +33,33 @@ Nine of the 24 runes (Gebo, Hagalaz, Nauthiz, Isa, Jera, Eihwaz, Sowilo, Ingwaz 
 
 The 24 runes of the Elder Futhark, the oldest runic alphabet, are listed in their traditional order and divided into three families of eight called *aettir*:
 
-- **Freyr's aett**: Fehu, Uruz, Thurisaz, Ansuz, Raidho, Kaunan, Gebo, Wunjo
-- **Heimdall's aett**: Hagalaz, Nauthiz, Isa, Jera, Eihwaz, Perthro, Algiz, Sowilo
-- **Tyr's aett**: Tiwaz, Berkano, Ehwaz, Mannaz, Laguz, Ingwaz, Dagaz, Othala
+- **Freyr's aett**: Fehu, Uruz, Thurisaz, Ansuz, Raidho, Kaunan, Gebo, Wunjo<br>
+  <a href="https://evoluteur.github.io/rune-reading/runes/fehu.html"><img src="img/runes/fehu.svg" height="52" alt="Fehu rune ᚠ" title="Fehu: Cattle, wealth"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/uruz.html"><img src="img/runes/uruz.svg" height="52" alt="Uruz rune ᚢ" title="Uruz: Aurochs, the wild ox"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/thurisaz.html"><img src="img/runes/thurisaz.svg" height="52" alt="Thurisaz rune ᚦ" title="Thurisaz: Giant, thorn"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/ansuz.html"><img src="img/runes/ansuz.svg" height="52" alt="Ansuz rune ᚨ" title="Ansuz: A god, the mouth"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/raidho.html"><img src="img/runes/raidho.svg" height="52" alt="Raidho rune ᚱ" title="Raidho: Ride, journey"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/kaunan.html"><img src="img/runes/kaunan.svg" height="52" alt="Kaunan rune ᚲ" title="Kaunan: Torch, also ulcer"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/gebo.html"><img src="img/runes/gebo.svg" height="52" alt="Gebo rune ᚷ" title="Gebo: Gift"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/wunjo.html"><img src="img/runes/wunjo.svg" height="52" alt="Wunjo rune ᚹ" title="Wunjo: Joy"></a>
+- **Heimdall's aett**: Hagalaz, Nauthiz, Isa, Jera, Eihwaz, Perthro, Algiz, Sowilo<br>
+  <a href="https://evoluteur.github.io/rune-reading/runes/hagalaz.html"><img src="img/runes/hagalaz.svg" height="52" alt="Hagalaz rune ᚺ" title="Hagalaz: Hail"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/nauthiz.html"><img src="img/runes/nauthiz.svg" height="52" alt="Nauthiz rune ᚾ" title="Nauthiz: Need"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/isa.html"><img src="img/runes/isa.svg" height="52" alt="Isa rune ᛁ" title="Isa: Ice"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/jera.html"><img src="img/runes/jera.svg" height="52" alt="Jera rune ᛃ" title="Jera: Year, harvest"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/eihwaz.html"><img src="img/runes/eihwaz.svg" height="52" alt="Eihwaz rune ᛇ" title="Eihwaz: Yew tree"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/perthro.html"><img src="img/runes/perthro.svg" height="52" alt="Perthro rune ᛈ" title="Perthro: Dice cup, the lot"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/algiz.html"><img src="img/runes/algiz.svg" height="52" alt="Algiz rune ᛉ" title="Algiz: Elk, protection"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/sowilo.html"><img src="img/runes/sowilo.svg" height="52" alt="Sowilo rune ᛊ" title="Sowilo: Sun"></a>
+- **Tyr's aett**: Tiwaz, Berkano, Ehwaz, Mannaz, Laguz, Ingwaz, Dagaz, Othala<br>
+  <a href="https://evoluteur.github.io/rune-reading/runes/tiwaz.html"><img src="img/runes/tiwaz.svg" height="52" alt="Tiwaz rune ᛏ" title="Tiwaz: Tyr, the warrior"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/berkano.html"><img src="img/runes/berkano.svg" height="52" alt="Berkano rune ᛒ" title="Berkano: Birch"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/ehwaz.html"><img src="img/runes/ehwaz.svg" height="52" alt="Ehwaz rune ᛖ" title="Ehwaz: Horse"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/mannaz.html"><img src="img/runes/mannaz.svg" height="52" alt="Mannaz rune ᛗ" title="Mannaz: Human being"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/laguz.html"><img src="img/runes/laguz.svg" height="52" alt="Laguz rune ᛚ" title="Laguz: Water, lake"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/ingwaz.html"><img src="img/runes/ingwaz.svg" height="52" alt="Ingwaz rune ᛜ" title="Ingwaz: Ing, the seed"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/dagaz.html"><img src="img/runes/dagaz.svg" height="52" alt="Dagaz rune ᛞ" title="Dagaz: Day"></a>
+  <a href="https://evoluteur.github.io/rune-reading/runes/othala.html"><img src="img/runes/othala.svg" height="52" alt="Othala rune ᛟ" title="Othala: Heritage, estate"></a>
 
 Each rune has its name (which you can hear), the sound it stands for (f, u, th, a, r...), literal meaning, keywords, an upright meaning, a reversed meaning where it has one, and a line of advice. The names, sounds and aettir are the traditional ones. The meanings and advice were written for this app, in the spirit of the tradition. Runes are an old tool for reflection, not a verdict: treat a reading as a mirror for your own judgment.
 
@@ -62,6 +86,6 @@ Rune-Reading is open source at [GitHub](https://github.com/evoluteur/rune-readin
 
 Had fun browsing the app? [Buy me a coffee by becoming a sponsor](https://github.com/sponsors/evoluteur).
 
-You may also be interested in my other divination project [Motivational-Numerology](https://github.com/evoluteur/motivational-numerology) ([demo](https://evoluteur.github.io/motivational-numerology/)). For more mystic arts as small web apps, see [Esoterica](https://evoluteur.github.io/esoterica.html).
+You may also be interested in my other divination projects [Tarot-Reading](https://github.com/evoluteur/tarot-reading) ([demo](https://evoluteur.github.io/tarot-reading/)), [I-Ching-Reading](https://github.com/evoluteur/i-ching-reading) ([demo](https://evoluteur.github.io/i-ching-reading/)) and [Motivational-Numerology](https://github.com/evoluteur/motivational-numerology) ([demo](https://evoluteur.github.io/motivational-numerology/)). For more mystic arts as small web apps, see [Esoterica](https://evoluteur.github.io/esoterica.html).
 
 Copyright (c) 2026 [Olivier Giulieri](https://evoluteur.github.io/).

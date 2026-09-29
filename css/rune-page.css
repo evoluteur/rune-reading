@@ -48,12 +48,19 @@
 
 /* previous / next */
 .rune-nav {
-  display: flex;
-  justify-content: space-between;
+  /* three fixed columns, so "All 24 runes" stays in place whatever the names */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: baseline;
   gap: 12px;
   margin: 28px 0 8px;
   font-size: 0.95em;
+}
+.rune-nav.top {
+  margin: 0 0 12px;
+}
+.rune-nav > span:last-child {
+  text-align: right;
 }
 
 /* the list of all runes (runes/index.html) */
@@ -106,6 +113,18 @@
 }
 
 @media only screen and (max-width: 480px) {
+  /* on phones, keep the title at two lines and the links at one, whatever the name */
+  h2.rune-title {
+    min-height: 2.5em;
+  }
+  .rune-nav > span,
+  .rune-nav > span a {
+    display: block;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .rune-hero {
     gap: 16px;
   }
