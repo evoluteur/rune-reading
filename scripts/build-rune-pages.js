@@ -143,7 +143,7 @@ const footer = () => `
           <a href="https://github.com/sponsors/evoluteur">Buy me a coffee by becoming a sponsor</a>.
         </p>
         <p>
-          You may also like <a href="https://evoluteur.github.io/tarot-reading/">Tarot</a>, <a href="https://evoluteur.github.io/i-ching-reading/">I Ching</a>, and <a href="https://evoluteur.github.io/motivational-numerology/">Motivational Numerology</a>. For more mystic arts as small web apps, see
+          You may also enjoy other readings like <a href="https://evoluteur.github.io/tarot-reading/">Tarot</a>, <a href="https://evoluteur.github.io/i-ching-reading/">I Ching</a>, and <a href="https://evoluteur.github.io/motivational-numerology/">Numerology</a>. For more mystic arts as small web apps, see
           <a href="https://evoluteur.github.io/esoterica.html">Esoterica</a>.
         </p>
         <p class="copyright">
@@ -230,13 +230,22 @@ const runePage = (r, i) => {
       <p>${r.name} looks the same turned upside down, so it has no reversed meaning. It is one of the nine runes that read the same either way up, and it is always read as ${lc(
         r.lore,
       )}.</p>`;
+  // previous / next links, shown under the title and again at the bottom
+  const runeNav = (
+    where,
+  ) => `<nav class="rune-nav ${where}" aria-label="Previous and next rune${where === "top" ? " (top)" : ""}">
+        <span>${prev ? `<a href="${prev.id}.html" rel="prev">← ${prev.name} ${prev.char}</a>` : ""}</span>
+        <a href="index.html">All 24 runes</a>
+        <span>${next ? `<a href="${next.id}.html" rel="next">${next.name} ${next.char} →</a>` : ""}</span>
+      </nav>`;
   return (
     head({ title, description, url, jsonld }) +
     header() +
     `
-    <h2>${r.name} rune meaning</h2>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Rune Reading</a> › <a href="index.html">The 24 runes</a> › ${r.name}</nav>
+    <h2 class="rune-title">${r.name} rune meaning</h2>
     <div class="content about rune-page">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Rune Reading</a> › <a href="index.html">The 24 runes</a> › ${r.name}</nav>
+      ${runeNav("top")}
 
       <div class="rune-hero">
         <div class="rune-figure">${runeFigure(r)}</div>
@@ -276,11 +285,7 @@ const runePage = (r, i) => {
         ${siblings.map((s) => runeChip(s, s === r)).join("\n        ")}
       </ol>
 
-      <nav class="rune-nav" aria-label="Previous and next rune">
-        <span>${prev ? `<a href="${prev.id}.html" rel="prev">← ${prev.name} ${prev.char}</a>` : ""}</span>
-        <a href="index.html">All 24 runes</a>
-        <span>${next ? `<a href="${next.id}.html" rel="next">${next.name} ${next.char} →</a>` : ""}</span>
-      </nav>
+      ${runeNav("bottom")}
 ` +
     footer()
   );
